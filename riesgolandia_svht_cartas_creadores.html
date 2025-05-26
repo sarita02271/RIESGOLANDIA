@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Riesgolandia</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffe6f0;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #ff99cc;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav {
+      background: #ffe6f0;
+      display: flex;
+      justify-content: center;
+      padding: 1rem;
+    }
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #c2185b;
+      font-weight: bold;
+    }
+    section {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      color: #c2185b;
+    }
+    .tablero, .cartas, .descargas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .card {
+      background: white;
+      padding: 1rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      flex: 1 1 200px;
+      border-radius: 8px;
+    }
+    .dice-box {
+      text-align: center;
+      margin: 2rem auto;
+    }
+    .dice-result, .card-result {
+      font-size: 2rem;
+      margin-top: 1rem;
+    }
+    button {
+      background: #ff99cc;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 0.5rem;
+    }
+    button:hover {
+      background: #d81b60;
+    }
+    footer {
+      background: #c2185b;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Riesgolandia</h1>
+    <p>Un juego educativo sobre seguridad y salud en el trabajo</p>
+  </header>
+
+  <nav>
+    <a href="#como-jugar">¿Cómo se juega?</a>
+    <a href="#componentes">Componentes</a>
+    <a href="#dados">Dados y Cartas</a>
+    <a href="#descargas">Descargables</a>
+  </nav>
+
+  <section id="como-jugar">
+    <h2>¿Cómo se juega?</h2>
+    <p>El objetivo del juego es adquirir elementos de seguridad alimentaria para tu restaurante, logrando el mayor lucro posible. Se avanza en el tablero lanzando dados y siguiendo instrucciones de las casillas.</p>
+  </section>
+
+  <section id="componentes">
+    <h2>Componentes del juego</h2>
+    <div class="tablero">
+      <div class="card">
+        <h3>Tablero</h3>
+        <p>Casillas con temas como Extintores, Primeros Auxilios, Documentación SST, etc.</p>
+      </div>
+      <div class="card">
+        <h3>Cartas</h3>
+        <p>Representan multas, beneficios, inspecciones y otros eventos.</p>
+      </div>
+      <div class="card">
+        <h3>Dinero</h3>
+        <p>Se entregan $1500 a cada jugador en vales de diferentes denominaciones.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="dados">
+    <h2>Simulador de Dados y Cartas</h2>
+    <div class="dice-box">
+      <button onclick="lanzarDados()">Lanzar Dados</button>
+      <div class="dice-result" id="resultadoDados">🎲 Esperando tirada...</div>
+      <button onclick="tirarCarta()">Tirar Carta</button>
+      <div class="card-result" id="resultadoCarta">🃏 Esperando carta...</div>
+    </div>
+  </section>
+
+  <section id="descargas">
+    <h2>Descargables</h2>
+    <div class="descargas">
+      <div class="card">
+        <h3>Reglamento</h3>
+        <p><a href="Riesgolandia pdf.pdf" download>Descargar PDF</a></p>
+      </div>
+      <div class="card">
+        <h3>Tablero e Imprimibles</h3>
+        <p>Próximamente disponibles.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>©️ 2025 Riesgolandia · Creado por SVHT</p>
+  </footer>
+
+<section id="creadores">
+  <h2>Creadores</h2>
+  <p>HANGER RINCÓN, TANIA ROJAS, SARA BECERRA, VALENTINA DÍAZ</p>
+</section>
+
+
+  <script>
+    function lanzarDados() {
+      const dado1 = Math.floor(Math.random() * 6) + 1;
+      const dado2 = Math.floor(Math.random() * 6) + 1;
+      const total = dado1 + dado2;
+      document.getElementById("resultadoDados").innerText = `🎲 Resultado: ${dado1} + ${dado2} = ${total}`;
+    }
+
+    function tirarCarta() {
+      const cartas = [
+        "¡Inspección sorpresa! Pierde un turno.",
+        "Recibes una multa de $50 por no usar equipo de seguridad.",
+        "¡Buen trabajo! Obtienes $100 por prácticas seguras.",
+        "Recibes una visita del inspector. Avanza 3 casillas.",
+        "¡Sorteo de seguridad! Obtienes una carta de beneficio adicional."
+      ];
+      const cartaSeleccionada = cartas[Math.floor(Math.random() * cartas.length)];
+      document.getElementById("resultadoCarta").innerText = `🃏 Carta: ${cartaSeleccionada}`;
+    }
+  </script>
+
+</body>
+</html>
